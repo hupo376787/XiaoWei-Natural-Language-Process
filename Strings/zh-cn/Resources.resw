@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AfterUpdate_Body.Text" xml:space="preserve">
+    <value># 版本 2018.5.28
+##### 新增：
+1. 升级到1803(四月更新，内部版本17134)
+
+[👉更多应用请戳👈](ms-windows-store://publisher/?name=小冰科技)
+
+&amp;nbsp;
+
+# 版本 2018.4.25
+##### 新增：
+1. 完善Boson AI
+2. 完成Tencent AI的调用，但是无新闻摘要和关键词提取（疼讯没有开放api）
+3. Boson AI换成https数据加密，疼讯已经是https加密了
+
+&amp;nbsp;
+</value>
+    <comment>What's new prompt message body</comment>
+  </data>
+  <data name="AfterUpdate_Title.Text" xml:space="preserve">
+    <value>新版本变化</value>
+    <comment>What's new prompt message title</comment>
+  </data>
+  <data name="AppName.Text" xml:space="preserve">
+    <value>小薇自然语言处理</value>
+  </data>
+  <data name="comboBoxLanguage.Header" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>小薇自然语言处理</value>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
+    <value>parameter must be an Enum name!</value>
+    <comment>Parameter must be an Enum name in enum to boolean converter</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
+    <value>value must be an Enum!</value>
+    <comment>Value must be an Enum in enum to boolean converter</comment>
+  </data>
+  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
+    <value>File name is null or empty. Specify a valid file name</value>
+    <comment>File name is null or empty to save file in settings storage extensions</comment>
+  </data>
+  <data name="FeedbackHub_Link.Content" xml:space="preserve">
+    <value>反馈中心</value>
+    <comment>Displayed as the link to launching the Feedback Hub.</comment>
+  </data>
+  <data name="FirstRun_Body.Text" xml:space="preserve">
+    <value># 小冰科技最新研发的自然语言处理软件——小薇NLP Windows 10通用版重磅来袭，欢迎下载体验!
+
+# 小薇NLP —— 内置强大的分词引擎（Boson AI 和 Tencent AI）。点一下解决中文语义分析需求——分词与词性标注、命名实体识别、情感分析、新闻分类、新闻摘要、关键词、语义联想等。更多功能正在研发中。
+
+&amp;nbsp;
+
+##### ===应用描述===
+
+本软件是在制品。可能会随时间更改，亦可能会作为最终产品发布。请仅在您熟悉此未完成软件的当前状态下购买。
+
+购买小薇NLP来预览和支持此软件的开发！我们非常希望能得到您的建议与反馈，以帮助我们为您打造最棒的体验！
+
+欢迎使用小冰科技最新研发的自然语言处理软件——小薇NLP，点一下解决中文语义分析需求。
+
+小薇NLP —— 点一下解决中文语义分析需求——分词与词性标注、命名实体识别、情感分析、新闻分类、新闻摘要、关键词、语义联想等。更多功能正在研发中。
+
+&amp;nbsp;
+
+##### ===适合人群===
+客服类、资讯类、网站类、社交类、搜索类、大数据类、生活服务类等需要对语句进行分析的管理员。
+
+&amp;nbsp;
+
+##### ===功能特色===
+1. 依托强大的机器学习能力和文本挖掘引擎，专注中文语义分析技术
+2. 千亿级互联网语料数据支持，精确理解自然语言
+3. 支持天气、音乐、新闻、财经、交通、美食、视频、提醒等垂直领域，并在不断扩展中
+4. 分词与词性标注、命名实体识别、情感分析、新闻分类、新闻摘要、关键词、语义联想等
+5. 更多好玩的功能正在研发中
+
+&amp;nbsp;</value>
+    <comment>First use prompt message body</comment>
+  </data>
+  <data name="FirstRun_Title.Text" xml:space="preserve">
+    <value>欢迎使用</value>
+    <comment>First use prompt message title</comment>
+  </data>
+  <data name="Main_Title.Text" xml:space="preserve">
+    <value>自然语言处理</value>
+    <comment>Page title for Main</comment>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>关于</value>
+    <comment>About this application title for Settings</comment>
+  </data>
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
+    <value>小薇自然语言处理 —— 内置强大的分词引擎（Boson AI 和 Tencent AI）。点一下解决中文语义分析需求——分词与词性标注、命名实体识别、情感分析、新闻分类、新闻摘要、关键词、语义联想等。更多功能正在研发中。</value>
+    <comment>About this application description for Settings</comment>
+  </data>
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
+    <value>隐私政策</value>
+    <comment>Privacy Statement link content for Settings</comment>
+  </data>
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
+    <value>http://www.cnblogs.com/hupo376787/p/7633204.html</value>
+    <comment>Here is your Privacy Statement url for Settings</comment>
+  </data>
+  <data name="Settings_Theme.Text" xml:space="preserve">
+    <value>主题</value>
+    <comment>Choose theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>暗</value>
+    <comment>Dark theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>系统默认</value>
+    <comment>Windows default theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>亮</value>
+    <comment>Light theme text for Settings</comment>
+  </data>
+  <data name="SettingsPage_Title.Text" xml:space="preserve">
+    <value>设置中心</value>
+    <comment>Page title for Settings</comment>
+  </data>
+  <data name="Shell_Main" xml:space="preserve">
+    <value>自然语言处理</value>
+    <comment>Navigation view item name for Main</comment>
+  </data>
+  <data name="Shell_Settings" xml:space="preserve">
+    <value>设置</value>
+    <comment>Navigation view item name for Settings</comment>
+  </data>
+  <data name="Settings_Title.Header" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="UpdateLog_Title.Header" xml:space="preserve">
+    <value>更新日志</value>
+  </data>
+  <data name="comboBoxSearchEngine.Header" xml:space="preserve">
+    <value>搜索引擎</value>
+  </data>
+  <data name="MoreApps_Link.Content" xml:space="preserve">
+    <value>更多App</value>
+  </data>
+  <data name="toogleNeedCropImage.OffContent" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="toogleNeedCropImage.OnContent" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="toogleNeedCropImage.Header" xml:space="preserve">
+    <value>裁剪图片</value>
+  </data>
+  <data name="Donate_Link.Content" xml:space="preserve">
+    <value>打赏，小礼物走一波</value>
+  </data>
+  <data name="WhatsNLP_Title.Header" xml:space="preserve">
+    <value>NLP是什么</value>
+  </data>
+  <data name="ButtonBaseTokens.Label" xml:space="preserve">
+    <value>基础粒度</value>
+  </data>
+  <data name="ButtonBaseTokens.ToolTipService.ToolTip" xml:space="preserve">
+    <value>基础粒度</value>
+  </data>
+  <data name="ButtonExportJson.Label" xml:space="preserve">
+    <value>导出Json</value>
+  </data>
+  <data name="ButtonExportJson.ToolTipService.ToolTip" xml:space="preserve">
+    <value>导出Json</value>
+  </data>
+  <data name="ButtonMixTokens.Label" xml:space="preserve">
+    <value>混合粒度</value>
+  </data>
+  <data name="ButtonMixTokens.ToolTipService.ToolTip" xml:space="preserve">
+    <value>混合粒度</value>
+  </data>
+  <data name="ButtonClearContent.Label" xml:space="preserve">
+    <value>清空内容</value>
+  </data>
+  <data name="ButtonClearContent.ToolTipService.ToolTip" xml:space="preserve">
+    <value>清空内容</value>
+  </data>
+  <data name="ButtonSegLegend.Label" xml:space="preserve">
+    <value>词性图例</value>
+  </data>
+  <data name="ButtonSegLegend.ToolTipService.ToolTip" xml:space="preserve">
+    <value>分词和词性图例</value>
+  </data>
+  <data name="ButtonBosonAIGo.Label" xml:space="preserve">
+    <value>分词标注</value>
+  </data>
+  <data name="ButtonBosonAIGo.ToolTipService.ToolTip" xml:space="preserve">
+    <value>分词与词性标注</value>
+  </data>
+  <data name="comboBoxSegTagEngine.Header" xml:space="preserve">
+    <value>分词标注引擎</value>
+  </data>
+  <data name="ButtonNamedEntityRecog.Label" xml:space="preserve">
+    <value>实体识别</value>
+  </data>
+  <data name="ButtonNamedEntityRecog.ToolTipService.ToolTip" xml:space="preserve">
+    <value>命名实体识别</value>
+  </data>
+  <data name="NamedEntity_Title.Text" xml:space="preserve">
+    <value>命名实体识别</value>
+    <comment>Page title for NamedEntity</comment>
+  </data>
+  <data name="Shell_NamedEntity" xml:space="preserve">
+    <value>命名实体识别</value>
+    <comment>Navigation view item name for NamedEntity</comment>
+  </data>
+  <data name="ButtonEntityLegend.Label" xml:space="preserve">
+    <value>实体图例</value>
+  </data>
+  <data name="ButtonEntityLegend.ToolTipService.ToolTip" xml:space="preserve">
+    <value>命名实体图例</value>
+  </data>
+  <data name="TextBlock_Classify.Text" xml:space="preserve">
+    <value>新闻分类</value>
+  </data>
+  <data name="TextBlock_Emotion.Text" xml:space="preserve">
+    <value>情感分析</value>
+  </data>
+  <data name="TextBlock_Keywords.Text" xml:space="preserve">
+    <value>关键词</value>
+  </data>
+  <data name="TextBlock_NamedEntity.Text" xml:space="preserve">
+    <value>命名实体</value>
+  </data>
+  <data name="TextBlock_Suggest.Text" xml:space="preserve">
+    <value>语义联想</value>
+  </data>
+  <data name="TextBlock_Summary.Text" xml:space="preserve">
+    <value>新闻摘要</value>
+  </data>
+  <data name="TextBlock_WordSegmentAndTag.Text" xml:space="preserve">
+    <value>分词与词性</value>
+  </data>
+  <data name="textBox_Input.PlaceholderText" xml:space="preserve">
+    <value>输入一段文本试试</value>
+  </data>
+  <data name="textBox_Summary.PlaceholderText" xml:space="preserve">
+    <value>暂时不可用</value>
+  </data>
+</root>

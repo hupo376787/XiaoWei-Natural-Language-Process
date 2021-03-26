@@ -1,0 +1,29 @@
+﻿{
+  "zh": [
+    "时间",
+    "地点",
+    "人名",
+    "组织名",
+    "公司名",
+    "产品名",
+    "职位"
+  ],
+  "en": [
+    "time",
+    "location",
+    "person_name",
+    "org_name",
+    "company_name",
+    "product_name",
+    "job_title"
+  ],
+  "bgcolor": [
+    "#FFCCCB",
+    "#488FCE",
+    "#9ACCCD",
+    "#FFCB99",
+    "#99CC67",
+    "#FF9899",
+    "#4DD9E6"
+  ]
+}

@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Main_Title.Text" xml:space="preserve">
+    <value>Natural Language Processing</value>
+    <comment>Page title for Main</comment>
+  </data>
+  <data name="Shell_Main" xml:space="preserve">
+    <value>NLP</value>
+    <comment>Navigation view item name for Main</comment>
+  </data>
+  <data name="ExceptionSettingsStorageExtensionsFileNameIsNullOrEmpty" xml:space="preserve">
+    <value>File name is null or empty. Specify a valid file name</value>
+    <comment>File name is null or empty to save file in settings storage extensions</comment>
+  </data>
+  <data name="Settings_Theme.Text" xml:space="preserve">
+    <value>Theme</value>
+    <comment>Choose theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
+    <value>Dark</value>
+    <comment>Dark theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Default.Content" xml:space="preserve">
+    <value>Windows default</value>
+    <comment>Windows default theme text for Settings</comment>
+  </data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve">
+    <value>Light</value>
+    <comment>Light theme text for Settings</comment>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>About this application</value>
+    <comment>About this application title for Settings</comment>
+  </data>
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
+    <value>Xiaowei NLP —— An app to analyze Chinese sentense, including two powerful engines(Boson AI and Tencent AI). Xiaowei NLP can do: word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way</value>
+    <comment>About this application description for Settings</comment>
+  </data>
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
+    <value>Privacy Statement</value>
+    <comment>Privacy Statement link content for Settings</comment>
+  </data>
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
+    <value>http://www.cnblogs.com/hupo376787/p/7633204.html</value>
+    <comment>Here is your Privacy Statement url for Settings</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterValueMustBeAnEnum" xml:space="preserve">
+    <value>value must be an Enum!</value>
+    <comment>Value must be an Enum in enum to boolean converter</comment>
+  </data>
+  <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
+    <value>parameter must be an Enum name!</value>
+    <comment>Parameter must be an Enum name in enum to boolean converter</comment>
+  </data>
+  <data name="Shell_Settings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Navigation view item name for Settings</comment>
+  </data>
+  <data name="AfterUpdate_Body.Text" xml:space="preserve">
+    <value># Version 2018.5.28
+##### New:
+1. Update to 1803(April 2018 Update, build 17134)
+
+[👉More apps click me👈](ms-windows-store://publisher/?name=小冰科技)
+
+&amp;nbsp;
+
+# Version 2018.4.25
+##### New:
+1. Finish the wrapper of Boson AI
+2. Finish the wrapper of Tencent AI
+3. Boson AI date transfer change to https encode, Tencent AI is already https encode
+
+&amp;nbsp;
+</value>
+    <comment>What's new prompt message body</comment>
+  </data>
+  <data name="AfterUpdate_Title.Text" xml:space="preserve">
+    <value>What's new in this version</value>
+    <comment>What's new prompt message title</comment>
+  </data>
+  <data name="FirstRun_Body.Text" xml:space="preserve">
+    <value># Xiaowei NLP for Windows 10 UWP version has grandly promoted.
+
+# Xiaowei NLP —— An app to analyze Chinese sentense, including two powerful engines(Boson AI and Tencent AI). Xiaowei NLP can do: word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way
+
+##### ===Description===
+
+This App is a work in progress. It may or may not change over time or release as a final product. Purchase only if you are comfortable with the current state of the unfinished app.
+
+Purchase NLP to preview and support the development of this title - we would love to get your input and feedback to help us shape the best experience possible!
+
+Welcome to use our latest developed Xiaowei NLP, An app to analyze Chinese sentense.
+
+Xiaowei NLP —— Do: word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way
+
+&amp;nbsp;
+
+##### ===For who===
+Administrator of customer service, information consult, website manage, social network, search engine, big data, life services, etc.
+
+&amp;nbsp;
+
+##### ===Features===
+1. Relying on powerful machine learning capabilities and text mining engine, focusing on Chinese semantic analysis technology
+2. 100 billion Internet data support, accurate understanding of natural language
+3. Support vertical areas such as weather, music, news, finance, transportation, food, video, and reminders, and continue to expand
+4. word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest
+5. More funny features are under developing
+
+&amp;nbsp;</value>
+    <comment>First use prompt message body</comment>
+  </data>
+  <data name="FirstRun_Title.Text" xml:space="preserve">
+    <value>Welcome</value>
+    <comment>First use prompt message title</comment>
+  </data>
+  <data name="FeedbackHub_Link.Content" xml:space="preserve">
+    <value>Feedback</value>
+    <comment>Displayed as the link to launching the Feedback Hub.</comment>
+  </data>
+  <data name="AppName.Text" xml:space="preserve">
+    <value>Xiaowei NLP</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Xiaowei NLP</value>
+  </data>
+  <data name="comboBoxLanguage.Header" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ButtonExportJson.Label" xml:space="preserve">
+    <value>ExportJson</value>
+  </data>
+  <data name="ButtonBaseTokens.Label" xml:space="preserve">
+    <value>BaseTokens</value>
+  </data>
+  <data name="SettingsPage_Title.Text" xml:space="preserve">
+    <value>Settings Center</value>
+    <comment>Page title for Settings</comment>
+  </data>
+  <data name="Settings_Title.Header" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="UpdateLog_Title.Header" xml:space="preserve">
+    <value>Update Log</value>
+  </data>
+  <data name="comboBoxSearchEngine.Header" xml:space="preserve">
+    <value>Search Engine</value>
+  </data>
+  <data name="MoreApps_Link.Content" xml:space="preserve">
+    <value>More apps</value>
+  </data>
+  <data name="ButtonExportJson.ToolTipService.ToolTip" xml:space="preserve">
+    <value>ExportJson</value>
+  </data>
+  <data name="ButtonMixTokens.Label" xml:space="preserve">
+    <value>MixTokens</value>
+  </data>
+  <data name="ButtonMixTokens.ToolTipService.ToolTip" xml:space="preserve">
+    <value>MixTokens</value>
+  </data>
+  <data name="ButtonBaseTokens.ToolTipService.ToolTip" xml:space="preserve">
+    <value>BaseTokens</value>
+  </data>
+  <data name="toogleNeedCropImage.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="toogleNeedCropImage.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="toogleNeedCropImage.Header" xml:space="preserve">
+    <value>Crop Image</value>
+  </data>
+  <data name="Donate_Link.Content" xml:space="preserve">
+    <value>Donate me</value>
+  </data>
+  <data name="WhatsNLP_Title.Header" xml:space="preserve">
+    <value>What's NLP</value>
+  </data>
+  <data name="ButtonClearContent.Label" xml:space="preserve">
+    <value>ClearContent</value>
+  </data>
+  <data name="ButtonClearContent.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Clear Content</value>
+  </data>
+  <data name="ButtonBosonAIGo.Label" xml:space="preserve">
+    <value>Seg Tag</value>
+  </data>
+  <data name="ButtonBosonAIGo.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Seg &amp; Pos Tag</value>
+  </data>
+  <data name="comboBoxSegTagEngine.Header" xml:space="preserve">
+    <value>Seg Tag Engine</value>
+  </data>
+  <data name="NamedEntity_Title.Text" xml:space="preserve">
+    <value>Named Entity Recognize</value>
+    <comment>Page title for NamedEntity</comment>
+  </data>
+  <data name="Shell_NamedEntity" xml:space="preserve">
+    <value>Entity Recognize</value>
+    <comment>Navigation view item name for NamedEntity</comment>
+  </data>
+  <data name="ButtonNamedEntityRecog.Label" xml:space="preserve">
+    <value>NamedEntityRecog</value>
+  </data>
+  <data name="ButtonNamedEntityRecog.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Named Entity Recognize</value>
+  </data>
+  <data name="EmotionAnalyze_Title.Text" xml:space="preserve">
+    <value>EmotionAnalyze</value>
+    <comment>Page title for EmotionAnalyze</comment>
+  </data>
+  <data name="Shell_EmotionAnalyze" xml:space="preserve">
+    <value>Emotion Analyze</value>
+    <comment>Navigation view item name for EmotionAnalyze</comment>
+  </data>
+  <data name="ClassifyAndSummary_Title.Text" xml:space="preserve">
+    <value>ClassifyAndSummary</value>
+    <comment>Page title for ClassifyAndSummary</comment>
+  </data>
+  <data name="Shell_ClassifyAndSummary" xml:space="preserve">
+    <value>Classify &amp; Summary</value>
+    <comment>Navigation view item name for ClassifyAndSummary</comment>
+  </data>
+  <data name="Keywords_Title.Text" xml:space="preserve">
+    <value>Keywords</value>
+    <comment>Page title for Keywords</comment>
+  </data>
+  <data name="Shell_Keywords" xml:space="preserve">
+    <value>Keywords</value>
+    <comment>Navigation view item name for Keywords</comment>
+  </data>
+  <data name="ButtonEntityLegend.Label" xml:space="preserve">
+    <value>EntityLegend</value>
+  </data>
+  <data name="ButtonEntityLegend.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Named Entity Legend</value>
+  </data>
+  <data name="ButtonSegLegend.Label" xml:space="preserve">
+    <value>Tag Legend</value>
+  </data>
+  <data name="ButtonSegLegend.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Segment and Tag Legend</value>
+  </data>
+  <data name="TextBlock_Classify.Text" xml:space="preserve">
+    <value>News Classify</value>
+  </data>
+  <data name="TextBlock_Emotion.Text" xml:space="preserve">
+    <value>Emotion Analysis</value>
+  </data>
+  <data name="TextBlock_Keywords.Text" xml:space="preserve">
+    <value>Keywords</value>
+  </data>
+  <data name="TextBlock_NamedEntity.Text" xml:space="preserve">
+    <value>Named Entity</value>
+  </data>
+  <data name="TextBlock_Suggest.Text" xml:space="preserve">
+    <value>Suggest</value>
+  </data>
+  <data name="TextBlock_Summary.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="TextBlock_WordSegmentAndTag.Text" xml:space="preserve">
+    <value>Word Segment And Tag</value>
+  </data>
+  <data name="textBox_Input.PlaceholderText" xml:space="preserve">
+    <value>Input a piece of text</value>
+  </data>
+  <data name="textBox_Summary.PlaceholderText" xml:space="preserve">
+    <value>Not available now</value>
+  </data>
+</root>

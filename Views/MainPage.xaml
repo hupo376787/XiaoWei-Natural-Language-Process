@@ -1,0 +1,706 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:fcu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:cu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:model="using:XiaoweiNLP.Models"
+    xmlns:lottieUwp="using:LottieUWP"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:chart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:primitives="using:Telerik.UI.Xaml.Controls.Primitives"
+    x:Class="XiaoweiNLP.Views.MainPage"
+    mc:Ignorable="d" >
+
+    <Page.Resources>
+        <DataTemplate x:Key="PhotosTemplate">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding bgcolor}">
+                <TextBlock Text="{Binding word}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="legendTB" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+        </Style>
+    </Page.Resources>
+
+    <Page.Style>
+        <StaticResource ResourceKey="PageStyle"/>
+    </Page.Style>
+
+    <Grid x:Name="ContentArea">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock x:Name="TitlePage" x:Uid="Main_Title" Text="WordSegment"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <ScrollViewer Grid.Row="1" Padding="5" Style="{StaticResource ScrollViewerAppleStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="100" MaxHeight="400"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox Text="欢迎使用小冰科技最新研发的自然语言处理程序。小冰科技旗下还有强大的人脸识别软件——《微识别》，自动追踪和识别人脸；具有科普性质的、清新脱俗的识花软件——《小薇识花》；汽车爱好者喜欢的识车软件——《小薇识车》；随时随地掌握世界范围内的地震和火山信息的《自然灾害》App；适合儿童涂鸦、随手记录idea的《草图大师》App；以及能够修改图像文件Exif信息和音乐文件mp3元数据信息的《Exif 信息》《Music Tags》。欢迎进入商店搜索关键词——&gt;小冰科技。"
+                    x:Name="textInput" x:Uid="textBox_Input" BorderBrush="Gray" BorderThickness="1" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TransparentBackgroundTextBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+                <TextBlock Grid.Row="1" x:Uid="TextBlock_WordSegmentAndTag" Text="Word Seg And Tag"
+                     Style="{StaticResource TitleStyle}" Margin="0,18,0,0"/>
+
+                <ListView Grid.Row="2"
+                    x:Name="WrapPanelContainer"
+                    IsItemClickEnabled="True"
+                    SelectionMode="Extended"
+                    Style="{StaticResource ListViewAppleStyle}"
+                    ItemsSource="{x:Bind Mode=OneWay, Path=SegTagItems}"
+                    ItemTemplate="{StaticResource PhotosTemplate}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="Height" Value="36" />
+                            <Setter Property="MinHeight" Value="36" />
+                            <Setter Property="Padding" Value="2"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+                <TextBlock Grid.Row="3" x:Uid="TextBlock_NamedEntity" Text="Named Entity Recognize"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <ListView Grid.Row="4"
+                    IsItemClickEnabled="True"
+                    SelectionMode="Extended"
+                    Style="{StaticResource ListViewAppleStyle}"
+                    ItemsSource="{x:Bind Mode=OneWay, Path=NamedEntityItems}"
+                    ItemTemplate="{StaticResource PhotosTemplate}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="Height" Value="36" />
+                            <Setter Property="MinHeight" Value="36" />
+                            <Setter Property="Padding" Value="2"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+                <TextBlock Grid.Row="5" x:Uid="TextBlock_Emotion" Text="Emotion Analysis"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <chart:RadPieChart x:Name="chart" ClipToBounds="False" PaletteName="DefaultDark" Margin="18,0,18,0" Height="168" Width="168">
+                        <chart:DoughnutSeries x:Name="MyDoughnutSeries" ShowLabels="True" >
+                            <chart:DoughnutSeries.ValueBinding>
+                                <chart:PropertyNameDataPointBinding PropertyName="Value"/>
+                            </chart:DoughnutSeries.ValueBinding>
+                            <chart:DoughnutSeries.LegendTitleBinding >
+                                <chart:PropertyNameDataPointBinding PropertyName="Title"/>
+                            </chart:DoughnutSeries.LegendTitleBinding>
+                        </chart:DoughnutSeries>
+                    </chart:RadPieChart>
+
+                    <primitives:RadLegendControl LegendProvider="{Binding ElementName=chart}" VerticalAlignment="Center">
+                        <primitives:RadLegendControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </primitives:RadLegendControl.ItemsPanel>
+                        <primitives:RadLegendControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Fill="{Binding Fill}" Stroke="{Binding Stroke}"
+                                    StrokeThickness="1" Width="10" Height="10"/>
+                                    <TextBlock Text="{Binding Title}" Foreground="{Binding Fill}"
+                                    Margin="10,0,0,0" FontStyle="Italic"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </primitives:RadLegendControl.ItemTemplate>
+                    </primitives:RadLegendControl>
+                </StackPanel>
+
+                <TextBlock Grid.Row="7" x:Uid="TextBlock_Classify" Text="News Classify"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <Grid Grid.Row="8" x:Name="bosonClassify">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="体育" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="教育" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="财经" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="3" Text="社会" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="4" Text="娱乐" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="5" Text="军事" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="6" Text="国内" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="7" Text="科技" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="8" Text="互联网" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="9" Text="房产" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="10" Text="国际" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="11" Text="女人" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="12" Text="汽车" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="13" Text="游戏" HorizontalAlignment="Center"/>
+
+                    <Slider x:Name="sliderClassify" Grid.Row="1" Grid.ColumnSpan="14" Minimum="0" Maximum="14" StepFrequency="0.5" IsTabStop="False"/>
+                </Grid>
+
+                <Grid Grid.Row="8" x:Name="tencentClassify">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="未知" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="天气" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="音乐" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="3" Text="股票" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="4" Text="新闻" HorizontalAlignment="Center"/>
+
+                    <Slider x:Name="sliderTencentClassify" Grid.Row="1" Grid.ColumnSpan="5" Minimum="0" Maximum="5" StepFrequency="0.5" IsTabStop="False"/>
+                </Grid>
+
+                <TextBlock Grid.Row="9" x:Uid="TextBlock_Summary" x:Name="TextBlock_Summary" Text="Summary"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <TextBox Grid.Row="10" x:Name="textSummary" x:Uid="textBox_Summary" BorderBrush="Gray" BorderThickness="1" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TransparentBackgroundTextBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+                <TextBlock Grid.Row="11" x:Uid="TextBlock_Keywords" Text="Keywords"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <ListView Grid.Row="12"
+                    IsItemClickEnabled="True"
+                    SelectionMode="Extended"
+                    Style="{StaticResource ListViewAppleStyle}"
+                    ItemsSource="{x:Bind Mode=OneWay, Path=KeywordsItems}"
+                    ItemTemplate="{StaticResource PhotosTemplate}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="Height" Value="36" />
+                            <Setter Property="MinHeight" Value="36" />
+                            <Setter Property="Padding" Value="2"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+                <TextBlock Grid.Row="13" x:Uid="TextBlock_Suggest" Text="Suggest"
+                    Style="{StaticResource TitleStyle}"  Margin="0,18,0,0"/>
+
+                <ListView Grid.Row="14"
+                    IsItemClickEnabled="True"
+                    SelectionMode="Extended"
+                    Style="{StaticResource ListViewAppleStyle}"
+                    ItemsSource="{x:Bind Mode=OneWay, Path=SuggestItems}"
+                    ItemTemplate="{StaticResource PhotosTemplate}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="Height" Value="36" />
+                            <Setter Property="MinHeight" Value="36" />
+                            <Setter Property="Padding" Value="2"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+            </Grid>
+        </ScrollViewer>
+
+        <lottieUwp:LottieAnimationView Grid.Row="1"
+                    x:Name="animationView"
+                    FileName="Assets/Lottie/material_wave_loading.json"
+                    RepeatCount="-1"
+                    AutoPlay="True"
+                    Visibility="Collapsed"/>
+
+        <Border Grid.RowSpan="3"  x:Name="border" Height="50" Width="50" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" cu:Background="{ThemeResource SystemControlBackgroundAccentBrush}"  fcu:Background="{ThemeResource SystemControlBackgroundAccentRevealBorderBrush}" CornerRadius="25" Tapped="Image_Tapped" PointerPressed="Border_PointerPressed" PointerReleased="Border_PointerReleased">
+            <Image Source="ms-appx:///Assets/Gift300.png" Width="28" Stretch="Uniform"/>
+        </Border>
+
+        <CommandBar Grid.Row="2" Background="Transparent" VerticalAlignment="Bottom">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Label="ExportJson" Visibility="Collapsed" x:Uid="ButtonExportJson" Click="OnExportJson">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF272;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Icon="PreviewLink" Label="EntityLegend" AllowFocusOnInteraction="True" x:Name="ButtonBosonAIEntityLegend" x:Uid="ButtonEntityLegend" Click="OnOpenLegend">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                        <Grid Canvas.ZIndex="999">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="72"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#FFCCCB" Margin="0,0,0,0">
+                                <TextBlock Text="时间" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Background="#488FCE" Margin="0,4,0,0">
+                                <TextBlock Text="地点" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Background="#9ACCCD" Margin="0,4,0,0">
+                                <TextBlock Text="人名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Background="#FFCB99" Margin="0,4,0,0">
+                                <TextBlock Text="组织名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Background="#99CC67" Margin="0,4,0,0">
+                                <TextBlock Text="公司名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Background="#FF9899" Margin="0,4,0,0">
+                                <TextBlock Text="产品名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Background="#4DD9E6" Margin="0,4,0,0">
+                                <TextBlock Text="职位" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </AppBarButton>
+            <AppBarButton Icon="PreviewLink" Label="EntityLegend" AllowFocusOnInteraction="True" x:Name="ButtonTencentAIEntityLegend" x:Uid="ButtonEntityLegend" Click="OnOpenLegend">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                        <Grid Canvas.ZIndex="999">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="72"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#FFCCCB" Margin="0,0,0,0">
+                                <TextBlock Text="人名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Background="#488FCE" Margin="0,4,0,0">
+                                <TextBlock Text="地名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Background="#9ACCCD" Margin="0,4,0,0">
+                                <TextBlock Text="机构名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Background="#FFCB99" Margin="0,4,0,0">
+                                <TextBlock Text="时间" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </AppBarButton>
+            <AppBarButton Icon="PreviewLink" Label="SegLegend" AllowFocusOnInteraction="True" x:Uid="ButtonSegLegend" x:Name="ButtonBosonAISegLegend" Click="OnOpenLegend">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                        <Grid Canvas.ZIndex="999">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#488FCE" Margin="0,2,4,0">
+                                <TextBlock Text="名词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Background="#C7AEE7" Margin="0,2,4,0">
+                                <TextBlock Text="时间词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Background="#CEE887" Margin="0,2,4,0">
+                                <TextBlock Text="处所词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" Background="#C9AA8A" Margin="0,2,0,0">
+                                <TextBlock Text="方位词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="0" Background="#FFCB99" Margin="0,4,4,0">
+                                <TextBlock Text="动词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Background="#67CCAA" Margin="0,4,4,0">
+                                <TextBlock Text="形容词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2" Background="#67A6D9" Margin="0,4,4,0">
+                                <TextBlock Text="区别词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="3" Background="#F3E988" Margin="0,4,0,0">
+                                <TextBlock Text="状态词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="0" Background="#9ACCCD" Margin="0,4,4,0">
+                                <TextBlock Text="代词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Background="#986699" Margin="0,4,4,0">
+                                <TextBlock Text="数字" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="2" Background="#FF9899" Margin="0,4,4,0">
+                                <TextBlock Text="量词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="3" Background="#FFCCCB" Margin="0,4,0,0">
+                                <TextBlock Text="副词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="0" Background="#99CC67" Margin="0,4,4,0">
+                                <TextBlock Text="介词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="1" Background="#8EA4DE" Margin="0,4,4,0">
+                                <TextBlock Text="连词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="2" Background="#4DD9E6" Margin="0,4,4,0">
+                                <TextBlock Text="助词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="3" Background="#F48363" Margin="0,4,0,0">
+                                <TextBlock Text="语气词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="0" Background="#F2D404" Margin="0,4,4,0">
+                                <TextBlock Text="拟声词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="1" Background="#30AADD" Margin="0,4,4,0">
+                                <TextBlock Text="前缀" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="2" Background="#55BFCC" Margin="0,4,4,0">
+                                <TextBlock Text="后缀" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="3" Background="#96DBF8" Margin="0,4,0,0">
+                                <TextBlock Text="字符串" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="0" Background="#CCCCCC" Margin="0,4,4,0">
+                                <TextBlock Text="标点符号" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Background="#96D888" Margin="0,4,4,0">
+                                <TextBlock Text="其他" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </AppBarButton>
+            <AppBarButton Icon="PreviewLink" Label="SegLegend" AllowFocusOnInteraction="True" x:Uid="ButtonSegLegend" x:Name="ButtonTencentAISegLegend" Click="OnOpenLegend">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                        <Grid Canvas.ZIndex="999">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                                <ColumnDefinition Width="72"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#488FCE" Margin="0,2,4,0">
+                                <TextBlock Text="未知词性" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Background="#C7AEE7" Margin="0,2,4,0">
+                                <TextBlock Text="形容词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Background="#CEE887" Margin="0,2,4,0">
+                                <TextBlock Text="副形词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" Background="#C9AA8A" Margin="0,2,4,0">
+                                <TextBlock Text="名形词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4" Background="#FFCB99" Margin="0,2,4,0">
+                                <TextBlock Text="区别词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="5" Background="#67CCAA" Margin="0,2,0,0">
+                                <TextBlock Text="连词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="0" Background="#67A6D9" Margin="0,4,4,0">
+                                <TextBlock Text="副词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Background="#F3E988" Margin="0,4,4,0">
+                                <TextBlock Text="叹词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2" Background="#9ACCCD" Margin="0,4,4,0">
+                                <TextBlock Text="方位词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="3" Background="#986699" Margin="0,4,4,0">
+                                <TextBlock Text="语素词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="4" Background="#FF9899" Margin="0,4,4,0">
+                                <TextBlock Text="前接部分" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="5" Background="#FFCCCB" Margin="0,4,0,0">
+                                <TextBlock Text="成语" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="0" Background="#99CC67" Margin="0,4,4,0">
+                                <TextBlock Text="简称略语" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="1" Background="#8EA4DE" Margin="0,4,4,0">
+                                <TextBlock Text="后接部分" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="2" Background="#4DD9E6" Margin="0,4,4,0">
+                                <TextBlock Text="习用语" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="3" Background="#F48363" Margin="0,4,4,0">
+                                <TextBlock Text="数词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="4" Background="#F2D404" Margin="0,4,4,0">
+                                <TextBlock Text="名词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Grid.Column="5" Background="#30AADD" Margin="0,4,0,0">
+                                <TextBlock Text="人名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="0" Background="#55BFCC" Margin="0,4,4,0">
+                                <TextBlock Text="姓" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="1" Background="#96DBF8" Margin="0,4,4,0">
+                                <TextBlock Text="名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="2" Background="#CCCCCC" Margin="0,4,4,0">
+                                <TextBlock Text="地名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="3" Background="#008040" Margin="0,4,4,0">
+                                <TextBlock Text="机构团体" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="4" Background="#AD8FCE" Margin="0,4,4,0">
+                                <TextBlock Text="其他专名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Grid.Column="5" Background="#C73DE7" Margin="0,4,0,0">
+                                <TextBlock Text="非汉字串" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="0" Background="#CE1F87" Margin="0,4,4,0">
+                                <TextBlock Text="拟声词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="1" Background="#C9AC8A" Margin="0,4,4,0">
+                                <TextBlock Text="介词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="2" Background="#FF3F99" Margin="0,4,4,0">
+                                <TextBlock Text="量词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="3" Background="#678BAA" Margin="0,4,4,0">
+                                <TextBlock Text="代词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="4" Background="#809A40" Margin="0,4,4,0">
+                                <TextBlock Text="处所词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Grid.Column="5" Background="#F3DD38" Margin="0,4,0,0">
+                                <TextBlock Text="时间词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="0" Background="#ABCDEF" Margin="0,4,4,0">
+                                <TextBlock Text="助词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="1" Background="#98CC69" Margin="0,4,4,0">
+                                <TextBlock Text="动词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="2" Background="#FFFF29" Margin="0,4,4,0">
+                                <TextBlock Text="副动词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="3" Background="#FF33FB" Margin="0,4,4,0">
+                                <TextBlock Text="名动词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="4" Background="#9922D7" Margin="0,4,4,0">
+                                <TextBlock Text="标点符号" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Grid.Column="5" Background="#8EAA3E" Margin="0,4,0,0">
+                                <TextBlock Text="非语素词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="0" Background="#4AC2E6" Margin="0,4,4,0">
+                                <TextBlock Text="语气词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="1" Background="#2DF363" Margin="0,4,4,0">
+                                <TextBlock Text="状态词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="2" Background="#D21404" Margin="0,4,4,0">
+                                <TextBlock Text="形语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="3" Background="#CA3ADD" Margin="0,4,4,0">
+                                <TextBlock Text="区别语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="4" Background="#3FBFCC" Margin="0,4,4,0">
+                                <TextBlock Text="副语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Grid.Column="5" Background="#78ABF8" Margin="0,4,0,0">
+                                <TextBlock Text="数词性语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="0" Background="#2FACCC" Margin="0,4,4,0">
+                                <TextBlock Text="名语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="1" Background="#00EA20" Margin="0,4,4,0">
+                                <TextBlock Text="量语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="2" Background="#C38CCB" Margin="0,4,4,0">
+                                <TextBlock Text="代语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="3" Background="#922267" Margin="0,4,4,0">
+                                <TextBlock Text="时语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="4" Background="#8CE3DE" Margin="0,4,4,0">
+                                <TextBlock Text="动语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="7" Grid.Column="5" Background="#4F2DE6" Margin="0,4,0,0">
+                                <TextBlock Text="状态词语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="0" Background="#FA8D63" Margin="0,4,4,0">
+                                <TextBlock Text="状态词语素" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="1" Background="#F2AC84" Margin="0,4,4,0">
+                                <TextBlock Text="开始词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="2" Background="#3033FD" Margin="0,4,4,0">
+                                <TextBlock Text="URL" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="3" Background="#C3DFCC" Margin="0,4,4,0">
+                                <TextBlock Text="电话号码" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="4" Background="#BACBF8" Margin="0,4,4,0">
+                                <TextBlock Text="email" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="8" Grid.Column="5" Background="#CEB58C" Margin="0,4,0,0">
+                                <TextBlock Text="结束词" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </AppBarButton>
+
+            <AppBarButton Label="ClearContent" Visibility="Collapsed" x:Uid="ButtonClearContent" Click="OnClearContent">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA99;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="MixTokens" x:Uid="ButtonMixTokens" x:Name="ButtonTencentAIMixTokens" Click="OnMixTokens">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEBD2;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="BaseTokens" x:Uid="ButtonBaseTokens" x:Name="ButtonTencentAIBaseTokens" Click="OnBaseTokens">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF22C;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="SegTag" x:Uid="ButtonBosonAIGo" x:Name="ButtonBosonAIGo" Click="OnBosonAIGo">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF22C;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+
+
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="PanoramicExState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1400"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="PanoramicState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="column0.Width" Value="*"/>
+                        <Setter Target="listView.Margin" Value="12,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleRow.Height" Value="0"/>
+                        <Setter Target="listView.Margin" Value="0"/>
+                        <Setter Target="column0.Width" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+    </Grid>
+</Page>

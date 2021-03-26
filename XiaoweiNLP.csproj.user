@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</Source>
+    <SmallTileSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</SmallTileSource>
+    <MediumTileSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</MediumTileSource>
+    <WideTileSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</WideTileSource>
+    <LargeTileSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</LargeTileSource>
+    <AppIconSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</AppIconSource>
+    <SplashScreenSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</SplashScreenSource>
+    <PackageLogoSource>E:\Universal Windows Platform\Store\XiaoweiNaturaLanguageProcessing\NLP.png</PackageLogoSource>
+    <AppxPackageIsForStore>True</AppxPackageIsForStore>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>7C3F55B7-619D-452D-B6B0-A4A36BC552CC</DeviceId>
+    <UseEmulator>false</UseEmulator>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,172 @@
+﻿<Page
+    x:Class="XiaoweiNLP.Views.NamedEntityPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    xmlns:fcu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:cu ="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:lottieUwp="using:LottieUWP"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="PhotosTemplate">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding bgcolor}">
+                <TextBlock Text="{Binding word}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="legendTB" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TitlePage" x:Uid="NamedEntity_Title" Text="WordSegment"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <Grid Grid.Row="1" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Text="欢迎使用小冰科技最新研发的自然语言处理程序。"
+                     x:Name="textInput" BorderBrush="Gray" BorderThickness="1" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource TransparentBackgroundTextBoxStyle}"/>
+
+            <ListView Grid.Row="2"
+                Name="WrapPanelContainer"
+                IsItemClickEnabled="True"
+                SelectionMode="Extended"
+                Style="{StaticResource ListViewAppleStyle}"
+                ItemsSource="{x:Bind SampleItems, Mode=OneWay}"
+                ItemTemplate="{StaticResource PhotosTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <controls:WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Height" Value="36" />
+                        <Setter Property="MinHeight" Value="36" />
+                        <Setter Property="Padding" Value="2"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <lottieUwp:LottieAnimationView Grid.RowSpan="3"
+                x:Name="animationView"
+                FileName="Assets/Lottie/material_wave_loading.json"
+                RepeatCount="-1"
+                AutoPlay="True"
+                Visibility="Collapsed"/>
+
+        </Grid>
+
+        <CommandBar Grid.Row="2" Background="Transparent" VerticalAlignment="Bottom">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Label="ExportJson" x:Uid="ButtonExportJson" Click="OnExportJson">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF272;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Icon="PreviewLink" Label="OpenLegend" AllowFocusOnInteraction="True" x:Uid="ButtonLegend" Click="OnOpenLegend">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout x:Name="flyoutLegend">
+                        <Grid Canvas.ZIndex="999">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="72"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#FFCCCB" Margin="0,0,0,0">
+                                <TextBlock Text="时间" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Background="#488FCE" Margin="0,4,0,0">
+                                <TextBlock Text="地点" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2" Background="#9ACCCD" Margin="0,4,0,0">
+                                <TextBlock Text="人名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="3" Background="#FFCB99" Margin="0,4,0,0">
+                                <TextBlock Text="组织名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="4" Background="#99CC67" Margin="0,4,0,0">
+                                <TextBlock Text="公司名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="5" Background="#FF9899" Margin="0,4,0,0">
+                                <TextBlock Text="产品名" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="6" Background="#4DD9E6" Margin="0,4,0,0">
+                                <TextBlock Text="职位" x:Uid="textblockSignInItemName" Style="{StaticResource legendTB}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </AppBarButton>
+            <AppBarButton Label="ClearContent" x:Uid="ButtonClearContent" Click="OnClearContent">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA99;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="NamedEntityRecog" x:Uid="ButtonNamedEntityRecog" Click="OnBosonAINamedEntityRecognize">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF22C;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="column0.Width" Value="*"/>
+                        <Setter Target="listView.Margin" Value="12,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleRow.Height" Value="0"/>
+                        <Setter Target="listView.Margin" Value="0"/>
+                        <Setter Target="column0.Width" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
