@@ -1,0 +1,60 @@
+﻿# Version 2018.5.28
+##### New:
+1. Update to 1803(April 2018 Update, build 17134)
+
+[👉More apps click me👈](ms-windows-store://publisher/?name=小冰科技)
+
+&nbsp;
+
+# Version 2018.4.25
+##### New:
+1. Finish the wrapper of Boson AI
+2. Finish the wrapper of Tencent AI
+3. Boson AI date transfer change to https encode, Tencent AI is already https encode
+
+&nbsp;
+
+# Version 2018.4.23
+##### New:
+1. Add word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way
+
+&nbsp;
+
+# Version 2018.4.15
+First version born🎉🎈🎉
+
+&nbsp;
+
+# Xiaowei NLP for Windows 10 UWP version has grandly promoted.
+
+# Xiaowei NLP —— An app to analyze Chinese sentense, including two powerful engines(Boson AI and Tencent AI). Xiaowei NLP can do: word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way
+
+##### ===Description===
+
+This App is a work in progress. It may or may not change over time or release as a final product. Purchase only if you are comfortable with the current state of the unfinished app.
+
+Purchase NLP to preview and support the development of this title - we would love to get your input and feedback to help us shape the best experience possible!
+
+Welcome to use our latest developed Xiaowei NLP, An app to analyze Chinese sentense.
+
+Xiaowei NLP —— Do: word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest. More interesting functions are on the way
+
+&nbsp;
+
+##### ===For who===
+Administrator of customer service, information consult, website manage, social network, search engine, big data, life services, etc.
+
+&nbsp;
+
+##### ===Features===
+1. Relying on powerful machine learning capabilities and text mining engine, focusing on Chinese semantic analysis technology
+2. 100 billion Internet data support, accurate understanding of natural language
+3. Support vertical areas such as weather, music, news, finance, transportation, food, video, and reminders, and continue to expand
+4. Word seg and tag, named entity recognize, emotion analysis, news classify, new summary, get keywords, get suggest
+5. More funny features are under developing
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
